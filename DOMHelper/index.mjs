@@ -11,12 +11,12 @@ const DOMHelper = doc => {
     // SECTION: DOMHelper Functions
     /**
      * Updates the attributes on a given element
-     * @param {Node} ele
+     * @param {HTMLElement|string} ele
      * @param {*} attrs
-     * @return {Node} The updated element
+     * @return {HTMLElement} The updated element
      */
     const update = (ele, attrs) => {
-        attrs = !((attrs === null) & (attrs === undefined)) ? attrs : {};
+        attrs = !(attrs === null || attrs === undefined) ? attrs : {};
         Object.entries(attrs).forEach(([attr, value]) => {
             tag.setAttribute(attr, value);
         });
@@ -36,7 +36,7 @@ const DOMHelper = doc => {
     };
     /**
      * Executes a querySelect on a given element
-     * @param {HTMLElement} ele
+     * @param {HTMLElement|string} ele
      * @param {string} selector
      * @return {HTMLElement}
      */
@@ -52,7 +52,7 @@ const DOMHelper = doc => {
     };
     /**
      * Executes a querySelectAll on a given element
-     * @param {HTMLElement} ele
+     * @param {HTMLElement|string} ele
      * @param {string} selector
      * @return {NodeList}
      */
@@ -69,7 +69,7 @@ const DOMHelper = doc => {
     };
     /**
      * Adds an element to a destination
-     * @param {HTMLElement} dest
+     * @param {HTMLElement|string} dest
      * @param {HTMLElement} ele
      * @return {HTMLElement} The destination element
      */
@@ -80,7 +80,7 @@ const DOMHelper = doc => {
     };
     /**
      * Adds text to an element
-     * @param {HTMLElement} ele
+     * @param {HTMLElement|string} ele
      * @param {string} text
      * @return {HTMLElement}
      */
@@ -91,7 +91,7 @@ const DOMHelper = doc => {
     };
     /**
      * Applies an event handler of a given type to a given element
-     * @param {HTMLElement} ele
+     * @param {HTMLElement|string} ele
      * @param {string} type
      * @param {EventListener} handler
      * @return {HTMLElement} The handled element
@@ -103,7 +103,7 @@ const DOMHelper = doc => {
     };
     /**
      * Removes an element from it's parent
-     * @param {HTMLElement} ele
+     * @param {HTMLElement|string} ele
      * @return {HTMLElement}
      */
     const remove = ele => {
@@ -113,7 +113,7 @@ const DOMHelper = doc => {
     // NOTE: Chainer allows a customized DOMHelper to apply to a given Node
     /**
      *  Creates a customized, limited scope DOMHelper to allow for chained method calls
-     * @param {Node} source
+     * @param {Node|string} source
      */
     const Chainer = source => {
         if (source && source.source) {

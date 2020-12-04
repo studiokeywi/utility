@@ -18,6 +18,5 @@ const swap = function (a, b) {
   [this[a], this[b]] = [this[b], this[a]];
 };
 
-
 export default { patch, random, shuffle };
 export { patch, random, shuffle };

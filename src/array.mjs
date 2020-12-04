@@ -7,12 +7,17 @@ const random = function () {
 };
 const shuffle = function (clone = false) {
   const arr = clone ? [...this] : this;
-  for (let i = arr.length, j; (j = randInt(i--)), i; arr.swap ? arr.swap(i, j) : swap.call(arr, i, j));
+  for (
+    let i = arr.length, j;
+    (j = arr.random ? arr.slice(0, i - 1).random() : random.call(arr.slice(0, i - 1))), --i;
+    arr.swap ? arr.swap(i, j) : swap.call(arr, i, j)
+  );
   return arr;
 };
 const swap = function (a, b) {
   [this[a], this[b]] = [this[b], this[a]];
 };
+
 
 export default { patch, random, shuffle };
 export { patch, random, shuffle };

@@ -47,7 +47,7 @@ const createAPITool = ({ apiMasterList = {}, propDelim = '_', pathDelim = '\\$' 
 //   console.log(await apiTool['gw2|json|v2/items/12345']('test 2'));
 // };
 
-const monkeyPatch = obj => data => void Object.assign(Object.getPrototypeOf(obj), data);
+const monkeyPatch = obj => data => void Object.assign(obj.prototype, data);
 
 export default { createAPITool, monkeyPatch };
 export { createAPITool, monkeyPatch };
